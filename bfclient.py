@@ -16,7 +16,6 @@ neighbors = {}                  # dictionary to hold neighbors and time since la
 neighbor_distance = {}
 original_distances = {}
 first_predecessor = {}
-broken_links = {}
 linked_down_nodes = {}          # dictionary for linked_down_nodes, so I can keep track of neighbors when they're linked down and restore them as neighbors when they're linked up
 deactivated_links = {}          # dictionary for nodes that have sent a LINKED_DOWN msg to me, so I can restore when I get a linkup
 next_arg = 3                    # arguments after argv[2] come in triplets
@@ -353,8 +352,6 @@ while nodeActive:
                     print data
                     sender = (data[1], int(data[2]))
                     target = (data[3], int(data[4]))
-                    broken_links[sender] = target
-                    broken_links[target] = sender
                     if target in predecessor:
                         if target in dv:
                             if predecessor[target] == sender:
