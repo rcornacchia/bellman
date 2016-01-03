@@ -332,13 +332,13 @@ while nodeActive:
                 elif data[0] == "LINKUP":
                     print "LINKUP"
                     sender = (data[1], int(data[2])) # sender ip, port
-                    if(dv[sender] == float("inf")):
-                        if(deactivated_links[sender] is not None):
-                            dv[sender] = int(deactivated_links[sender])
-                            del deactivated_links[sender]
-                            neighbors[sender] = time.time()
-                            ROUTE_UPDATE()
-                            print "LINK RESTORED"
+                    # if(dv[sender] == float("inf")):
+                    if(deactivated_links[sender] is not None):
+                        dv[sender] = int(deactivated_links[sender])
+                        del deactivated_links[sender]
+                        neighbors[sender] = time.time()
+                        ROUTE_UPDATE()
+                        print "LINK RESTORED"
                 elif data[0] == "LINKDOWN":
                     sender = (data[1], int(data[2])) # sender ip, port
                     deactivated_links[sender] = int(dv[sender])
